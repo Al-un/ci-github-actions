@@ -1,5 +1,5 @@
 <template>
-  <my-card>
+  <my-card class="my-card-action">
     <div class="card-body">
       <slot></slot>
     </div>
@@ -24,8 +24,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.my-card {
+<style lang="scss">
+.my-card-action {
   .card-body {
     padding: 16px;
   }

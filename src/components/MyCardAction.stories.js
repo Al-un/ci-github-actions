@@ -13,7 +13,7 @@ const Template = (args) => ({
     return { args };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
-  template: '<my-card-action v-bind="args">Some text here</my-card>',
+  template: '<my-card-action v-bind="args">Some text here</my-card-action>',
 });
 
 export const Default = Template.bind({});
