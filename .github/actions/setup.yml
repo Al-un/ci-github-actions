@@ -9,9 +9,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # actions/checkout: https://github.com/actions/checkout
-    - name: Checkout
-      uses: actions/checkout@v2
+    # # actions/checkout: https://github.com/actions/checkout
+    # - name: Checkout
+    #   uses: actions/checkout@v2
 
     # actions/setup-node: https://github.com/actions/setup-node
     - name: Use Node.js ${{ node-version }}

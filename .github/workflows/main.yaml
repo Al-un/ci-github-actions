@@ -89,8 +89,10 @@ jobs:
         node-version: [14.x, 15.x]
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       # Use local file https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runsstepsuses
-      - uses: ./.github/actions/setup@v1
+      - uses: ./.github/actions/setup
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm run lint
