@@ -1,5 +1,5 @@
 name: "Setup"
-description: "Setup and prepare the repo"
+description: "Setup node environment and restore cached dependencies"
 
 inputs:
   node-version:

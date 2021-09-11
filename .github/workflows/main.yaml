@@ -19,6 +19,8 @@ jobs:
         uses: actions/checkout@v2
 
       - uses: ./.github/actions/setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       # Conditional steps not supported by composite actions. Also, the
       # installation step should only be executed during the setup
