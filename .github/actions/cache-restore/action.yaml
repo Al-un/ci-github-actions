@@ -1,9 +1,9 @@
-name: "Setup"
-description: "Setup node environment and restore cached dependencies"
+name: "Cache restoration"
+description: "Setup a NodeJS environment and restore cache if any, given a node version"
 
 inputs:
   node-version:
-    description: "Node version to install"
+    description: "Node version to use"
     required: true
     default: lts/fermium
 
