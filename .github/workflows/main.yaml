@@ -1,6 +1,11 @@
 name: Code checking
 
-on: [push]
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   # ---------- Initialise environment by installing the dependencies
