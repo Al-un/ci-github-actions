@@ -4,32 +4,14 @@ on: [push]
 
 jobs:
   setup:
-    name: Setup
+    name: Initialise Workflow
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # actions/setup-node: https://github.com/actions/setup-node
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14.x
-          # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-dependencies
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
-
-      - name: Cache Node Modules
-        id: node-cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
-
-      - name: Install Dependencies
-        if: steps.node-cache.outputs.cache-hit != 'true'
-        run: npm install
+      - uses: ./.github/actions/setup
 
   lint:
     name: Lint check
@@ -40,12 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cache Node Modules
-        id: node-cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
+      - uses: ./.github/actions/setup
 
       - run: npm run lint
 
@@ -78,11 +55,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cache Node Modules
-        id: node-cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
-
+      - uses: ./.github/actions/setup
+      
       - run: npm run test:unit
