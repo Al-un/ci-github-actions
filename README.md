@@ -1,34 +1,20 @@
+![Master main flow](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yml/badge.svg)
+
 # ci-github-actions
 
-## Project setup
-```
-npm install
-```
+Testing Github Actions on a Vue 3 project:
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- Setup basic actions
 
-### Compiles and minifies for production
-```
-npm run build
-```
+  - [ ] Github action 101
 
-### Run your unit tests
-```
-npm run test:unit
-```
+    - [Quickstart](https://docs.github.com/en/actions/quickstart)
+    - [Overview](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
+    - [Node.js build and test](https://docs.github.com/en/actions/guides/building-and-testing-nodejs?learn=continuous_integration)
+    - [Workflow badge](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
+  - [ ] Parallel jobs (Like CircleCI fanning out)
+  - [ ] Mandatory passing check
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Add Storybook + Chromatic checks
+  - [ ] Adding secret to repo (Chromatic key)
