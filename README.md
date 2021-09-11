@@ -1,4 +1,4 @@
-![Master main flow](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yml/badge.svg)
+![Master main flow](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yaml/badge.svg)
 
 # ci-github-actions
 
