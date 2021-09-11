@@ -1,104 +1,53 @@
-name: GitHub Actions 101
+name: Code checking
 
-# Triggers: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on
 on: [push]
 
 jobs:
-  # Hello-World:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-  #     - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-  #     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-  #     - name: Check out repository code
-  #       uses: actions/checkout@v2
-  #     - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-  #     - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-  #     - name: List files in the repository
-  #       run: |
-  #         ls ${{ github.workspace }}
-  #     - run: echo "🍏 This job's status is ${{ job.status }}."
+  # ---------- Initialise environment by installing the dependencies
+  init:
+    name: Initialise Workflow
+    runs-on: ubuntu-latest
 
-  # checker:
-  #   name: Checker
-  #   runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 14.x, 15.x: for build testing
+        # lts/fermium: for other steps
+        node-version: [lts/fermium, 14.x, 15.x]
 
-  #   strategy:
-  #     matrix:
-  #       # Check latest LTS and latest version
-  #       node-version: [14.x, 15.x]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #   steps:
-  #     # actions/checkout: https://github.com/actions/checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+      - uses: ./.github/actions/setup
 
-  #     # actions/setup-node: https://github.com/actions/setup-node
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #         # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-dependencies
-  #         cache: "npm"
-  #         cache-dependency-path: "**/package-lock.json"
+      # Conditional steps not supported by composite actions. Also, the
+      # installation step should only be executed during the setup
+      - name: Install Dependencies
+        # Syntax: steps.{{ id }}.outputs.cache-hit
+        # See: https://www.jonathan-wilkinson.com/github-actions-cache-everything
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm install
 
-  #     # # Dependencies caching: https://stackoverflow.com/a/64345698/4906586
-  #     # # actions/cache: https://github.com/actions/cache
-  #     # - name: Cache npm dependencies
-  #     #   uses: actions/cache@v2
-  #     #   with:
-  #     #     path: "~/.npm"
-  #     #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-  #     #     restore-keys: |
-  #     #       ${{ runner.os }}-node-
-
-  #     - run: npm ci
-  #     - run: npm run build
-  #     - run: npm run lint
-
-  # setup:
-  #   name: Setup
-  #   runs-on: ubuntu-latest
-
-  #   strategy:
-  #     matrix:
-  #       # Check latest LTS and latest version
-  #       # node-version: [14.x, 15.x]
-  #       node-version: [14.x]
-
-  #   steps:
-  #     # actions/checkout: https://github.com/actions/checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-
-  #     # actions/setup-node: https://github.com/actions/setup-node
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #         # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-dependencies
-  #         cache: "npm"
-  #         cache-dependency-path: "**/package-lock.json"
-
+  # ---------- Linting check
   lint:
     name: Lint check
     runs-on: ubuntu-latest
+    needs: init
 
     steps:
-      # Needs checkout before calling a local action via the repository name
-      # requires the repository to be public
       - name: Checkout
         uses: actions/checkout@v2
-      # Use local file https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runsstepsuses
-      # must be .github/actions/setup/actions.yml
+
       - uses: ./.github/actions/setup
-        with:
-          node-version: 14.x
+
       - run: npm run lint
 
+  # ---------- Build check on multiple node version
   build:
     name: Build check
     runs-on: ubuntu-latest
+    needs: init
+
     strategy:
       matrix:
         # Check latest LTS and latest version
@@ -114,15 +63,16 @@ jobs:
 
       - run: npm run build
 
+  # ---------- Unit testing
   test-unit:
     name: Run unit test
     runs-on: ubuntu-latest
+    needs: init
+
     steps:
       - name: Checkout
-
         uses: actions/checkout@v2
+
       - uses: ./.github/actions/setup
 
-        with:
-          node-version: 14.x
       - run: npm run test:unit
