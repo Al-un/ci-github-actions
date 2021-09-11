@@ -20,7 +20,8 @@ Testing Github Actions on a Vue 3 project:
   - [Article: GitHub Actions: Cache Everything](https://www.jonathan-wilkinson.com/github-actions-cache-everything)
 
 
-- [ ] Require mandatory passing check
+- [x] Require mandatory passing check
+  - [Doc: `on` syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on)
 
-- [ ] Add Storybook + Chromatic checks
-  - Adding secret to repo (Chromatic key)
+- [x] Add Storybook + Chromatic checks: https://github.com/Al-un/ci-github-actions/pull/4
+  - [Doc: Setup GitHub action for Chromatic](https://www.chromatic.com/docs/github-actions)
