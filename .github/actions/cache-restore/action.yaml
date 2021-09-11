@@ -6,6 +6,10 @@ inputs:
     description: "Node version to use"
     required: true
     default: lts/fermium
+outputs:
+  cache-hit:
+    description: "Forward actions/cache cache-hit output"
+    value: ${{ steps.node-cache.outputs.cache-hit }}
 
 runs:
   using: "composite"

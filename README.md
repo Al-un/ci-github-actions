@@ -1,4 +1,5 @@
-![Master main flow](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yaml/badge.svg)
+[![Master Code checking](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yaml/badge.svg)](https://github.com/Al-un/ci-github-actions/actions?query=branch%3Amaster)
+[![Chromatic](https://github.com/Al-un/ci-github-actions/actions/workflows/chromatic.yaml/badge.svg)](https://master--613c33aa6a019e003a9e8764.chromatic.com/)
 
 # ci-github-actions
 
@@ -28,3 +29,4 @@ Testing Github Actions on a Vue 3 project:
 - [x] Add Storybook + Chromatic checks: https://github.com/Al-un/ci-github-actions/pull/4
   - [Doc: Setup GitHub action for Chromatic](https://www.chromatic.com/docs/github-actions)
   - [Doc: Caveat with `actions/checkout@v2`](https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code)
+  - [Repo: `chromeaui/action`](https://github.com/chromaui/action)
