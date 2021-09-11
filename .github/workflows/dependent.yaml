@@ -13,6 +13,13 @@ jobs:
 
       - uses: ./.github/actions/setup
 
+      # Conditional steps not supported by composite actions
+      - name: Install Dependencies
+        # steps.{{ id }}.outputs.cache-hit
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm install
+        shell: bash
+
   lint:
     name: Lint check
     runs-on: ubuntu-latest
@@ -56,5 +63,5 @@ jobs:
         uses: actions/checkout@v2
 
       - uses: ./.github/actions/setup
-      
+
       - run: npm run test:unit

@@ -24,9 +24,5 @@ runs:
       uses: actions/cache@v2
       with:
         path: node_modules
-        key: node-modules-${{ hashFiles('package-lock.json') }}
-
-    - name: Install Dependencies
-      if: steps.node-cache.outputs.cache-hit != 'true'
-      run: npm install
-      shell: bash
+        # For matrix strategy, include the node version in the cache key
+        key: node-modules-${{ inputs.node-version }}-${{ hashFiles('package-lock.json') }}
