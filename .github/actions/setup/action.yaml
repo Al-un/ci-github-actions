@@ -1,5 +1,5 @@
 name: "Setup"
-description: "Setup node environment and restore cached dependencies"
+description: "Setup environment"
 
 inputs:
   node-version:
@@ -10,19 +10,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # actions/setup-node: https://github.com/actions/setup-node
-    - name: Use Node.js ${{ inputs.node-version }}
-      uses: actions/setup-node@v2
+    - uses: ./.github/actions/cache-restore
       with:
         node-version: ${{ inputs.node-version }}
-        # # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-dependencies
-        # cache: "npm"
-        # cache-dependency-path: "**/package-lock.json"
 
-    - name: Cache Node Modules
-      id: node-cache
-      uses: actions/cache@v2
-      with:
-        path: node_modules
-        # For matrix strategy, include the node version in the cache key
-        key: node-modules-${{ inputs.node-version }}-${{ hashFiles('package-lock.json') }}
+    # Conditional steps not supported by composite actions. Also, the
+    # installation step should only be executed during the setup
+    - name: Install Dependencies
+      # Syntax: steps.{{ id }}.outputs.cache-hit
+      # See: https://www.jonathan-wilkinson.com/github-actions-cache-everything
+      if: steps.node-cache.outputs.cache-hit != 'true'
+      run: npm install
