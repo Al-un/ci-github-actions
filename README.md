@@ -34,3 +34,4 @@ Testing Github Actions on a Vue 3 project:
 # Notes
 
 - End to end testing is broken
+- Snapshot testing not working for unit tests :(
