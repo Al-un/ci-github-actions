@@ -1,4 +1,4 @@
-![Master main flow](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yaml/badge.svg) 
+[![Master Code checking](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yaml/badge.svg)](https://github.com/Al-un/ci-github-actions/actions?query=branch%3Amaster)
 [![Chromatic](https://github.com/Al-un/ci-github-actions/actions/workflows/chromatic.yaml/badge.svg)](https://master--613c33aa6a019e003a9e8764.chromatic.com/)
 
 # ci-github-actions
