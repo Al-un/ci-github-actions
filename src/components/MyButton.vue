@@ -20,11 +20,11 @@ export default defineComponent({
 .my-button {
   display: flex;
   align-items: center;
-  background-color: rebeccapurple;
-  border: none;
+  background-color: transparent;
+  border: 1px solid rebeccapurple;
   border-radius: 8px;
   box-sizing: border-box;
-  color: white;
+  color: rebeccapurple;
   justify-content: center;
 
   &.small {
