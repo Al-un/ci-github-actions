@@ -1,0 +1,25 @@
+name: "Setup"
+description: "Setup and prepare the repo"
+
+inputs:
+  node-version:
+    description: "Node version to install"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    # actions/checkout: https://github.com/actions/checkout
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # actions/setup-node: https://github.com/actions/setup-node
+    - name: Use Node.js ${{ node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ node-version }}
+        # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-dependencies
+        cache: "npm"
+        cache-dependency-path: "**/package-lock.json"
+
+    - run: npm ci
