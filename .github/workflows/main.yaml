@@ -1,7 +1,5 @@
 name: GitHub Actions Demo
 
-# Node.js workflow: https://docs.github.com/en/actions/guides/building-and-testing-nodejs?learn=continuous_integration
-
 on: [push]
 
 jobs:
