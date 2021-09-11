@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       # actions/setup-node: https://github.com/actions/setup-node
       - name: Use Node.js
         uses: actions/setup-node@v2
