@@ -21,6 +21,7 @@ Testing Github Actions on a Vue 3 project:
 
 
 - [x] Require mandatory passing check
+  - [Doc: required status check](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/troubleshooting-required-status-checks)
   - [Doc: `on` syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on)
 
 - [x] Add Storybook + Chromatic checks: https://github.com/Al-un/ci-github-actions/pull/4
