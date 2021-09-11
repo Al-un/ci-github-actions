@@ -40,6 +40,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Cache Node Modules
+        id: node-cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+
       - run: npm run lint
 
   # build:
