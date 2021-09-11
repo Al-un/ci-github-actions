@@ -15,6 +15,7 @@ Testing Github Actions on a Vue 3 project:
 
   - [ ] Parallel jobs (Like CircleCI fanning out)
     - [Doc: Creating a composite action](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action?learn=create_actions)
+    - [Doc: `runs` for composite actions](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runs-for-composite-actions)
     - [GitHub Blog: Reduce duplication with action composition](https://github.blog/changelog/2021-08-25-github-actions-reduce-duplication-with-action-composition/)
     - [Article: Stop wasting your time and create reusable actions](https://dev.to/n3wt0n/github-composite-actions-nest-actions-within-actions-3e5l)
     - Composite actions file must be named `action.y(a)ml`
