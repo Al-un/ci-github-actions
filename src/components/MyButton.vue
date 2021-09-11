@@ -22,7 +22,7 @@ export default defineComponent({
   align-items: center;
   background-color: rebeccapurple;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   box-sizing: border-box;
   color: white;
   justify-content: center;
