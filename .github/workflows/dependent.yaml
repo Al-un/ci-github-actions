@@ -1,0 +1,60 @@
+name: Dependent jobs
+
+on: [push]
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+
+    # actions/setup-node: https://github.com/actions/setup-node
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ inputs.node-version }}
+        # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-dependencies
+        cache: "npm"
+        cache-dependency-path: "**/package-lock.json"
+
+
+  lint:
+    name: Lint check
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: npm run lint
+
+  # build:
+  #   name: Build check
+  #   runs-on: ubuntu-latest
+  #   needs: setup
+
+  #   strategy:
+  #     matrix:
+  #       # Check latest LTS and latest version
+  #       node-version: [14.x, 15.x]
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+
+  #     - uses: ./.github/actions/setup
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+
+  #     - run: npm run build
+
+  test-unit:
+    name: Run unit test
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
+      - name: Checkout
+
+        with:
+          node-version: 14.x
+      - run: npm run test:unit
