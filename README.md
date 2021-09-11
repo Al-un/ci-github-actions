@@ -12,6 +12,7 @@ Testing Github Actions on a Vue 3 project:
   - [Doc: Workflow badge](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)
 
 - [x] Improve with Parallel jobs (Like CircleCI fanning out) https://github.com/Al-un/ci-github-actions/pull/2
+
   - [Doc: Creating a composite action](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action?learn=create_actions)
   - [Doc: `runs` for composite actions](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runs-for-composite-actions)
   - [GitHub Blog: Reduce duplication with action composition](https://github.blog/changelog/2021-08-25-github-actions-reduce-duplication-with-action-composition/)
@@ -19,10 +20,11 @@ Testing Github Actions on a Vue 3 project:
   - [Article: dependent jobs](https://www.edwardthomson.com/blog/github_actions_17_dependent_jobs.html)
   - [Article: GitHub Actions: Cache Everything](https://www.jonathan-wilkinson.com/github-actions-cache-everything)
 
-
 - [x] Require mandatory passing check
+
   - [Doc: required status check](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/troubleshooting-required-status-checks)
   - [Doc: `on` syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on)
 
 - [x] Add Storybook + Chromatic checks: https://github.com/Al-un/ci-github-actions/pull/4
   - [Doc: Setup GitHub action for Chromatic](https://www.chromatic.com/docs/github-actions)
+  - [Doc: Caveat with `actions/checkout@v2`](https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code)
