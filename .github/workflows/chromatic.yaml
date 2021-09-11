@@ -35,8 +35,12 @@ jobs:
     needs: init
 
     steps:
+      # Chromatic caveat when using checkout@v2:
+      # https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
 
       - uses: ./.github/actions/cache-restore
 
@@ -44,6 +48,7 @@ jobs:
         uses: chromaui/action@v1
         # Chromatic GitHub Action options
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          buildScriptName: "storybook:build"
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
