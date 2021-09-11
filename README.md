@@ -19,6 +19,7 @@ Testing Github Actions on a Vue 3 project:
     - [GitHub Blog: Reduce duplication with action composition](https://github.blog/changelog/2021-08-25-github-actions-reduce-duplication-with-action-composition/)
     - [Article: Stop wasting your time and create reusable actions](https://dev.to/n3wt0n/github-composite-actions-nest-actions-within-actions-3e5l)
     - [Article: dependent jobs](https://www.edwardthomson.com/blog/github_actions_17_dependent_jobs.html)
+    - [Article: GitHub Actions: Cache Everything](https://www.jonathan-wilkinson.com/github-actions-cache-everything)
     - Composite actions file must be named `action.y(a)ml`
   - [ ] Mandatory passing check
 

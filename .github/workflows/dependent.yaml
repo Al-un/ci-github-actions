@@ -20,6 +20,17 @@ jobs:
           cache: "npm"
           cache-dependency-path: "**/package-lock.json"
 
+      - name: Cache Node Modules
+          id: node-cache
+          uses: actions/cache@v2
+          with:
+            path: node_modules
+            key: node-modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Dependencies
+          if: steps.cache.outputs.cache-hit != 'true'
+          run: npm install
+
   lint:
     name: Lint check
     runs-on: ubuntu-latest
