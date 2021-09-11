@@ -30,3 +30,7 @@ Testing Github Actions on a Vue 3 project:
   - [Doc: Setup GitHub action for Chromatic](https://www.chromatic.com/docs/github-actions)
   - [Doc: Caveat with `actions/checkout@v2`](https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code)
   - [Repo: `chromeaui/action`](https://github.com/chromaui/action)
+
+# Notes
+
+- End to end testing is broken
