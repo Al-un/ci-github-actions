@@ -89,9 +89,12 @@ jobs:
         node-version: [14.x, 15.x]
 
     steps:
+      # Needs checkout before calling a local action via the repository name
+      # requires the repository to be public
       - name: Checkout
         uses: actions/checkout@v2
       # Use local file https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runsstepsuses
+      # must be .github/actions/setup/actions.yml
       - uses: ./.github/actions/setup
         with:
           node-version: ${{ matrix.node-version }}
