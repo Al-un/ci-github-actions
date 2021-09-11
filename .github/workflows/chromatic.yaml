@@ -45,11 +45,23 @@ jobs:
 
       - uses: ./.github/actions/cache-restore
 
+      # For non-master branches (pull requests):
       - name: Publish to Chromatic
+        if: github.ref != 'refs/heads/main'
         uses: chromaui/action@v1
-        # Chromatic GitHub Action options
         with:
           buildScriptName: "storybook:build"
-          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+      # Ignore changes on master branch:
+      # https://www.chromatic.com/docs/github-actions#github-squashrebase-merge-and-the-main-branch
+
+      - name: Publish to Chromatic and auto accept changes
+        if: github.ref == 'refs/heads/main'
+        uses: chromaui/action@v1
+        with:
+          buildScriptName: "storybook:build"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: true # 👈 Option to accept all changes
