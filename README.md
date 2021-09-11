@@ -6,7 +6,7 @@ Testing Github Actions on a Vue 3 project:
 
 - Setup basic actions
 
-  - [ ] Github action 101
+  - [x] Github action 101: https://github.com/Al-un/ci-github-actions/pull/1
 
     - [Quickstart](https://docs.github.com/en/actions/quickstart)
     - [Overview](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
