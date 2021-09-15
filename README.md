@@ -1,5 +1,5 @@
-[![Master Code checking](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yaml/badge.svg)](https://github.com/Al-un/ci-github-actions/actions?query=branch%3Amaster)
-[![Chromatic](https://github.com/Al-un/ci-github-actions/actions/workflows/chromatic.yaml/badge.svg)](https://master--613c33aa6a019e003a9e8764.chromatic.com/)
+[![Master Code checking](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yaml/badge.svg?branch=develop)](https://github.com/Al-un/ci-github-actions/actions?query=branch%3Adevelop)
+[![Chromatic](https://github.com/Al-un/ci-github-actions/actions/workflows/chromatic.yaml/badge.svg?branch=develop)](https://www.chromatic.com/builds?appId=613c33aa6a019e003a9e8764&branch=develop)
 
 # ci-github-actions
 
@@ -30,6 +30,7 @@ Testing Github Actions on a Vue 3 project:
   - [Doc: Setup GitHub action for Chromatic](https://www.chromatic.com/docs/github-actions)
   - [Doc: Caveat with `actions/checkout@v2`](https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code)
   - [Repo: `chromeaui/action`](https://github.com/chromaui/action)
+  - [Doc: `on` syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags)
 
 # Notes
 

@@ -2,9 +2,14 @@ name: Chromatic
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
+    # Chromatic run:
+    #   - master      : skipped
+    #   - release/*   : skipped
+    #   - develop     : upload only, skip review
+    #   - *           : need UI review
+    branches-ignore:
+      - 'master'
+      - 'release/**'
 
 jobs:
   # ---------- Initialise environment by installing the dependencies
@@ -18,8 +23,6 @@ jobs:
 
       - uses: ./.github/actions/cache-restore
         id: node-cache
-        with:
-          node-version: lts/fermium
 
       # Conditional steps not supported by composite actions. Also, the
       # installation step should only be executed during the setup
@@ -47,18 +50,18 @@ jobs:
 
       # For non-master branches (pull requests):
       - name: Publish to Chromatic
-        if: github.ref != 'refs/heads/main'
+        if: github.ref != 'refs/heads/develop'
         uses: chromaui/action@v1
         with:
           buildScriptName: "storybook:build"
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
-      # Ignore changes on master branch:
+      # Ignore changes on develop branch:
       # https://www.chromatic.com/docs/github-actions#github-squashrebase-merge-and-the-main-branch
 
       - name: Publish to Chromatic and auto accept changes
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/develop'
         uses: chromaui/action@v1
         with:
           buildScriptName: "storybook:build"

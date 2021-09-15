@@ -22,24 +22,26 @@ export default defineComponent({
   align-items: center;
   background-color: transparent;
   border: 1px solid rebeccapurple;
-  border-radius: 8px;
   box-sizing: border-box;
   color: rebeccapurple;
   justify-content: center;
 
   &.small {
+    border-radius: 12px;
     font-size: 12px;
     height: 24px;
     padding: 0 8px;
   }
 
   &.medium {
+    border-radius: 18px;
     font-size: 14px;
     height: 36px;
     padding: 0 12px;
   }
 
   &.large {
+    border-radius: 24px;
     font-size: 16px;
     height: 48px;
     padding: 0 16px;
