@@ -17,7 +17,7 @@ jobs:
       matrix:
         # 14.x, 15.x: for build testing
         # lts/fermium: for other steps
-        node-version: [lts/fermium, 14.x, 15.x]
+        node-version: [lts/*, 14.x, 15.x]
 
     steps:
       - name: Checkout
