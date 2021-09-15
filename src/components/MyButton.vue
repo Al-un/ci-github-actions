@@ -28,7 +28,7 @@ export default defineComponent({
 
   &.small {
     border-radius: 12px;
-    font-size: 12px;
+    font-size: 10px;
     height: 24px;
     padding: 0 8px;
   }
