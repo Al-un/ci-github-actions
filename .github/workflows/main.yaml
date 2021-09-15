@@ -1,11 +1,7 @@
 name: Code checking
 
 # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on
-on:
-  push:
-    branches:
-      - master
-  pull_request:
+on: [push]
 
 jobs:
   # ---------- Initialise environment by installing the dependencies
@@ -17,7 +13,7 @@ jobs:
       matrix:
         # 14.x, 15.x: for build testing
         # lts/fermium: for other steps
-        node-version: [lts/fermium, 14.x, 15.x]
+        node-version: [lts/*, 14.x, 15.x]
 
     steps:
       - name: Checkout

@@ -1,0 +1,29 @@
+name: Simple code checking
+
+# The standard use case would be executing those checks in a pull request
+on: pull_request
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    # All steps are sequentially executed
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Checking linting
+        run: npm run lint
+
+      - name: Checking build
+        run: npm run build
+
+      - name: Run unit testing
+        run: npm run test
