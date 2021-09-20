@@ -12,25 +12,25 @@ on:
       - 'release/**'
 
 jobs:
-  # ---------- Initialise environment by installing the dependencies
-  init:
-    name: Initialise Workflow
-    runs-on: ubuntu-latest
+  # # ---------- Initialise environment by installing the dependencies
+  # init:
+  #   name: Initialise Workflow
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-      - uses: ./.github/actions/cache-restore
-        id: node-cache
+  #     - uses: ./.github/actions/cache-restore
+  #       id: node-cache
 
-      # Conditional steps not supported by composite actions. Also, the
-      # installation step should only be executed during the setup
-      - name: Install Dependencies
-        # Syntax: steps.{{ id }}.outputs.cache-hit
-        # See: https://www.jonathan-wilkinson.com/github-actions-cache-everything
-        if: steps.node-cache.outputs.cache-hit != 'true'
-        run: npm install
+  #     # Conditional steps not supported by composite actions. Also, the
+  #     # installation step should only be executed during the setup
+  #     - name: Install Dependencies
+  #       # Syntax: steps.{{ id }}.outputs.cache-hit
+  #       # See: https://www.jonathan-wilkinson.com/github-actions-cache-everything
+  #       if: steps.node-cache.outputs.cache-hit != 'true'
+  #       run: npm install
 
   # ---------- chromatic deployment
   chromatic-deployment:
@@ -46,7 +46,7 @@ jobs:
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
 
-      - uses: ./.github/actions/cache-restore
+      # - uses: ./.github/actions/cache-restore
 
       # For non-master branches (pull requests):
       - name: Publish to Chromatic
