@@ -8,8 +8,13 @@ on:
     #   - develop     : upload only, skip review
     #   - *           : need UI review
     branches-ignore:
-      - 'master'
-      - 'release/**'
+      - "master"
+      - "release/**"
+
+# Ensure only one workflow per branch is running
+concurrency:
+  group: ci-chromatic-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   # ---------- Initialise environment by installing the dependencies
