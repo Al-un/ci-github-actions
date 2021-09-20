@@ -32,6 +32,9 @@ Testing Github Actions on a Vue 3 project:
   - [Repo: `chromeaui/action`](https://github.com/chromaui/action)
   - [Doc: `on` syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags)
 
+- [ ] Concurrency
+  - [GitHub blog: limit workflow run or job concurrency](https://github.blog/changelog/2021-04-19-github-actions-limit-workflow-run-or-job-concurrency/)
+  - [Doc: concurrency](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#concurrency)
 # Notes
 
 - End to end testing is broken

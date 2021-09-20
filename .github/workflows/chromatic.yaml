@@ -11,6 +11,11 @@ on:
       - 'master'
       - 'release/**'
 
+concurrency:
+  # Ensure only one workflow per branch is running
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   # # ---------- Initialise environment by installing the dependencies
   # init:
