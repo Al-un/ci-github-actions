@@ -8,12 +8,12 @@ on:
     #   - develop     : upload only, skip review
     #   - *           : need UI review
     branches-ignore:
-      - 'master'
-      - 'release/**'
+      - "master"
+      - "release/**"
 
+# Ensure only one workflow per branch is running
 concurrency:
-  # Ensure only one workflow per branch is running
-  group: ${{ github.head_ref }}
+  group: ci-chromatic-${{ github.head_ref }}
   cancel-in-progress: true
 
 jobs:
