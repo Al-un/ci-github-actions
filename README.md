@@ -1,7 +1,19 @@
 [![Master Code checking](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yaml/badge.svg?branch=develop)](https://github.com/Al-un/ci-github-actions/actions/workflows/main.yaml?query=branch%3Adevelop)
 [![Chromatic](https://github.com/Al-un/ci-github-actions/actions/workflows/chromatic.yaml/badge.svg?branch=develop)](https://www.chromatic.com/builds?appId=613c33aa6a019e003a9e8764&branch=develop)
 
-# ci-github-actions
+# Github <!-- omit in toc -->
+
+- [Pull Request template](#pull-request-template)
+- [GitHub actions](#github-actions)
+- [Notes](#notes)
+
+
+Testing various GitHub functionalities
+
+## Pull Request template
+
+- [Doc: Create a PR template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository)
+## GitHub actions
 
 Testing Github Actions on a Vue 3 project:
 
@@ -32,11 +44,11 @@ Testing Github Actions on a Vue 3 project:
   - [Repo: `chromeaui/action`](https://github.com/chromaui/action)
   - [Doc: `on` syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags)
 
-- [ ] Concurrency
+- [x] Concurrency
   - [GitHub blog: limit workflow run or job concurrency](https://github.blog/changelog/2021-04-19-github-actions-limit-workflow-run-or-job-concurrency/)
   - [Doc: concurrency](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#concurrency)
   - [Doc: `github` context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context)
-# Notes
+## Notes
 
 - End to end testing is broken
 - Snapshot testing not working for unit tests :(
