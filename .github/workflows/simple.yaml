@@ -1,7 +1,10 @@
 name: Simple code checking
 
 # The standard use case would be executing those checks in a pull request
-on: pull_request
+on: 
+  pull_request:
+    branches:
+      - impossible-pattern/*
 
 jobs:
   checks:
